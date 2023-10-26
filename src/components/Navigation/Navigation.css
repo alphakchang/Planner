@@ -1,0 +1,26 @@
+.navbar {
+    background-color: #2E314F;
+}
+
+.navTitle {
+    color: #FFFAF8;
+}
+
+.navTitle:hover {
+    color: #FFFAF8;
+}
+
+.nav-item a {
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #FFFAF8;
+    border-radius: 8px;
+    transition: 0.5s;
+}
+
+.nav-item a:hover {
+    color: #2E314F;
+    /* font-size: 1.2em; */
+    background-color: #FFFAF8;
+    border-radius: 15px;
+}

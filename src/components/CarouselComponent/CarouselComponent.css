@@ -1,0 +1,8 @@
+.chartDisplay {
+    height: 40vh;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    pointer-events: none;
+}
