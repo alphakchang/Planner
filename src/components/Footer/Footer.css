@@ -1,0 +1,29 @@
+/* Footer Animation */
+
+h6 {
+    margin-left: 100px;
+}
+h6 span{
+    transition: .5s linear
+}
+h6:hover {
+    margin-left: 35px;
+}
+h6 span:nth-child(4){
+    opacity: 0;
+}
+h6:hover span:nth-child(1){
+    opacity: 0;
+}
+h6:hover span:nth-child(2){
+    color: #dd4e4e;
+}
+h6:hover span:nth-child(3){
+    opacity: 0;
+}
+h6:hover span:nth-child(4){
+    opacity: 1;
+    margin-right: 50px;
+}
+
+/* End of Footer Animation */

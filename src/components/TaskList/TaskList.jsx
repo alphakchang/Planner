@@ -36,7 +36,7 @@ class TaskList extends Component {
     render() {
 
         const { totalTaskCount, allTasks } = this.state;
-        const task = allTasks[0];
+        // const task = allTasks[0];
 
         return (
             <div>
@@ -57,11 +57,11 @@ class TaskList extends Component {
                     <div className="col-2 p-1 border border-2 rounded bg-dark-subtle"><span className="input-group-text">Budget</span></div>
                 </div>
                 {allTasks.map((task, index) => (
-                <div className="row g-3 d-flex align-content-center my-1" key={index}>
-                    <div className="col-8">{task ? task.task_name : 'Loading...'}</div>
-                    <div className="col-2">{task ? task.deadline : 'Loading...'}</div>
-                    <div className="col-2">{task ? task.required_hours : 'Loading...'}</div>
-                </div>
+                    <div className="row g-3 d-flex align-content-center my-1" key={index}>
+                        <div className="col-8">{task ? task.task_name : 'Loading...'}</div>
+                        <div className="col-2">{task ? task.deadline : 'Loading...'}</div>
+                        <div className="col-2">{task ? task.required_hours : 'Loading...'}</div>
+                    </div>
                 ))}
             </div>
         );
