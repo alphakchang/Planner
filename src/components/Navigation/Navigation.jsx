@@ -35,10 +35,7 @@ const Navigation = () => {
                             <a href="#teamWorkload" className="nav-link">Team Workload</a>
                         </li>
                         <li className="nav-item">
-                            <a href="tasks.html" className="nav-link">All Tasks</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="https://portal.alphacrc.com:3443/" className="nav-link">Alpha Portal</a>
+                            <a href="http://naga.alphacrc.com:5214" className="nav-link">AI Playground</a>
                         </li>
                     </ul>
                 </div>

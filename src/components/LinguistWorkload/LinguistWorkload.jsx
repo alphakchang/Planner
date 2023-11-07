@@ -9,7 +9,29 @@ class LinguistWorkload extends Component {
         super(props);
         this.state = {
             proxy: props.proxy,
-            username: props.username
+            username: props.username,
+            triggerRender: false
+        }
+        this.barChartRef = React.createRef();
+        this.carouselRef = React.createRef();
+    }
+
+    triggerRerender = () => {
+        console.log('LinguistWorkload rerendered!');
+        this.setState(prevState => ({
+            triggerRender: !prevState.triggerRender
+        }));
+        this.handleRefreshWorkload();
+    };
+
+    handleRefreshWorkload = () => {
+        if (this.barChartRef.current) {
+            this.barChartRef.current.refreshWorkload();
+            console.log('BarChart rerendered!');
+        }
+        if (this.carouselRef.current) {
+            this.carouselRef.current.carouselRerender();
+            console.log('Carousel rerendered!');
         }
     }
     
@@ -29,7 +51,7 @@ class LinguistWorkload extends Component {
                         <div className="row g-1">
                             <div className="p-1 barContainer">
     
-                                <WorkloadBarChart proxy={proxy} username={username} daysRequired={1} daysAdvanced={0}/>
+                                <WorkloadBarChart proxy={proxy} username={username} daysRequired={1} daysAdvanced={0} ref={this.barChartRef}/>
                                 
                             </div>
                         </div>
@@ -43,7 +65,7 @@ class LinguistWorkload extends Component {
                         <div className="row g-3">
                             <div className="p-1 barContainer">
     
-                                <CarouselComponent proxy={proxy} username={username}/>
+                                <CarouselComponent proxy={proxy} username={username} ref={this.carouselRef}/>
     
                             </div>
                         </div>

@@ -38,13 +38,13 @@ class LinguistInfo extends Component {
         const { fullname, locale } = this.state;
 
         return (
-            <div>
+            <div className='mt-4'>
                 {/*  Title  */}
-                <div className="row my-3">
+                {/* <div className="row my-3">
                     <div className="col-sm-2 p-1 border border-2 rounded bg-primary-subtle text-center">
                         <span className="fs-5 fw-bold">My Workload</span>
                     </div>
-                </div>
+                </div> */}
 
                 {/*  Linguist info  */}
                 <div className="row g-3 d-flex align-content-center">

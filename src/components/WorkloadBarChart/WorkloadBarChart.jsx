@@ -87,33 +87,39 @@ class WorkloadBarChart extends Component {
         this.fetchWorkload();
     }
 
-    fetchWorkload = () => {
-        const { daysRequired, daysAdvanced } = this.state;
-
-        const newDates = generateDates(daysRequired, daysAdvanced);
-        const workloadDataArray = [];
-    
-        newDates.forEach((date, index) => {
-            fetch(`${this.state.proxy}/workload/${this.state.username}`, {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ date })
-            })
-            .then(response => response.json())
-            .then(workload => {
-                workloadDataArray.push(workload);
-    
-                if(index === newDates.length - 1) {
-                    this.setState({ workloadData: workloadDataArray, loading: false }, () => {
-                        this.setupChart(newDates);
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        });
+    refreshWorkload = async () => {
+        await this.fetchWorkload();
     }
+
+    fetchWorkload = async () => {
+        try {
+          const { daysRequired, daysAdvanced } = this.state;
+          const newDates = generateDates(daysRequired, daysAdvanced);
+          const workloadDataArray = [];
+      
+          for (const date of newDates) {
+            const response = await fetch(`${this.state.proxy}/workload/${this.state.username}`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ date })
+            });
+      
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+      
+            const workload = await response.json();
+            workloadDataArray.push(workload);
+          }
+      
+          this.setState({ workloadData: workloadDataArray, loading: false }, () => {
+            this.setupChart(newDates);
+          });
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      };
+      
 
     setupChart = (dates) => {
         const { workloadData } = this.state;
