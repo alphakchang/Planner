@@ -8,18 +8,22 @@ import LinguistInfo from './components/LinguistInfo/LinguistInfo';
 import LinguistWorkload from './components/LinguistWorkload/LinguistWorkload';
 import TaskList from './components/TaskList/TaskList';
 import TeamWorkload from './components/TeamWorkload/TeamWorkload';
-import UserNameInput from './components/UserNameInput/UserNameInput';
+import UsernameInput from './components/UsernameInput/UsernameInput';
 import logo from './components/Navigation/alpha_logo.png';
+import UserNotFound from './components/Alerts/UserNotFound/UserNotFound';
+
+const initialState = {
+  proxy: 'http://localhost:3001',
+  username: '',
+  userReady: false,
+  userNotFound: false
+};
 
 class App extends Component {
 
   constructor() {
     super();
-    this.state = {
-      proxy: 'http://localhost:3001',
-      username: '',
-      userReady: false
-    }
+    this.state = initialState;
     this.taskListRef = React.createRef();
     this.linguistWorkloadRef = React.createRef();
     this.teamWorkloadRef = React.createRef();
@@ -44,6 +48,19 @@ class App extends Component {
     this.setState({username: event.target.value}, () => {
       console.log(this.state.username)
     });
+  }
+
+  onUserSubmit = async () => {
+    try {
+      const response = await fetch(`${this.state.proxy}/name/${this.state.username}`)
+      if (!response.ok) {
+        this.setState({userNotFound: true})
+      } else {
+        this.onUserConfirm();
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
 
   onUserConfirm = () => {
@@ -87,13 +104,24 @@ class App extends Component {
               <div className='row d-flex justify-content-center'>
                 <div className="col-4 text-center">
                   <div className="my-2">
-                    <UserNameInput onUserChange={this.onUserChange} onUserConfirm={this.onUserConfirm}/>
+                    <UsernameInput proxy={proxy} onUserChange={this.onUserChange} onUserSubmit={this.onUserSubmit}/>
                   </div>
                   <div className="my-5">
                       <img src={logo} alt='logo' />
                   </div>
                 </div>
               </div>
+              {this.state.userNotFound ? (
+                <div className="row d-flex justify-content-center">
+                  <div className="col-8">
+                    <div>
+                      <UserNotFound />
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div> 
           </section>
         )}

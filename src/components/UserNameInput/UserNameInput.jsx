@@ -3,7 +3,24 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
-const UserNameInput = ({ onUserChange, onUserConfirm }) => {
+/**
+ * This component simply allows the user to enter a username, then submit that username to App.jsx
+ * 
+ * Receives two functions from App.jsx as props:
+ * onUserChange
+ * onUserSubmit
+ */
+
+const UsernameInput = ({ onUserChange, onUserSubmit }) => {
+
+  // monitor if 'Enter' key was pressed, run onUserConfirm() when it is pressed
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      onUserSubmit();
+    }
+  };
+  
   return (
     <>
       <InputGroup className="mb-3">
@@ -14,8 +31,9 @@ const UserNameInput = ({ onUserChange, onUserConfirm }) => {
           aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
           onChange={onUserChange}
+          onKeyPress={handleKeyPress} // apparently deprecated, but still can be used, if there's a better method, please update
         />
-        <Button variant="outline-secondary" id="button" onClick={onUserConfirm}>
+        <Button variant="outline-secondary" id="button" onClick={onUserSubmit}>
           Confirm
         </Button>
       </InputGroup>
@@ -23,4 +41,4 @@ const UserNameInput = ({ onUserChange, onUserConfirm }) => {
   );
 }
 
-export default UserNameInput;
+export default UsernameInput;

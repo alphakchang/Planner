@@ -10,8 +10,8 @@ class TeamWorkload extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            proxy: this.props.proxy,
-            username: this.props.username,
+            proxy: props.proxy,
+            username: props.username,
             teamName: '',
             teamMembers: [],
             memberNames: [],
