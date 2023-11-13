@@ -4,9 +4,9 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 /**
- * This component simply allows the user to enter a username, then submit that username to App.jsx
+ * This component allows the user to enter a username, then submit that username to App.jsx
  * 
- * Receives two functions from App.jsx as props:
+ * Receives two props functions:
  * onUserChange
  * onUserSubmit
  */

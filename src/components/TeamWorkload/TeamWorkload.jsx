@@ -37,7 +37,6 @@ class TeamWorkload extends Component {
     }
 
     triggerRerender = async () => {
-        console.log('TeamWorkload rerendered!');
         this.setState(prevState => ({
             triggerRender: !prevState.triggerRender
         }), () => {

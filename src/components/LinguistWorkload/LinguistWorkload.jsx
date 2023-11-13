@@ -17,7 +17,6 @@ class LinguistWorkload extends Component {
     }
 
     triggerRerender = () => {
-        console.log('LinguistWorkload rerendered!');
         this.setState(prevState => ({
             triggerRender: !prevState.triggerRender
         }));
@@ -27,11 +26,9 @@ class LinguistWorkload extends Component {
     handleRefreshWorkload = () => {
         if (this.barChartRef.current) {
             this.barChartRef.current.refreshWorkload();
-            console.log('BarChart rerendered!');
         }
         if (this.carouselRef.current) {
             this.carouselRef.current.carouselRerender();
-            console.log('Carousel rerendered!');
         }
     }
     

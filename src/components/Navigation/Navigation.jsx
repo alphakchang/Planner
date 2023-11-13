@@ -2,6 +2,11 @@ import React from 'react';
 import './Navigation.css';
 import logo from './alpha_logo.png';
 
+/**
+ * This component is the navigation bar of the application
+ * @returns Navigation bar component
+ */
+
 const Navigation = () => {
     return (
         <nav className="navbar navbar-expand-md fixed-top" id="top">
@@ -14,13 +19,6 @@ const Navigation = () => {
                     <span className="fw-bold text-uppercase navbar-brand navTitle">
                         Alpha Work Allocation Planner
                     </span>
-
-                {/* toggle button for mobile nav */}
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
 
                 {/* navbar links */}
                 <div className="collapse navbar-collapse justify-content-end align-center" id="main-nav">

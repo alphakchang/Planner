@@ -3,6 +3,17 @@ import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Dropdown from 'react-bootstrap/Dropdown';
 
+/**
+ * This component allows the user to perform actions on a task
+ * 
+ * The actions available are dependent on the status of the task
+ * 
+ * If the task is unassigned, the user can claim the task
+ * If the task is assigned to the user, the user can mark the task as done or unclaim the task
+ * 
+ * 
+ */
+
 class ActionButton extends Component {
     
     constructor(props) {
