@@ -35,7 +35,7 @@ import UserNotFound from './components/Alerts/UserNotFound/UserNotFound';
 
 // The initial state of the application, only the proxy needs to be decided by the developer
 const initialState = {
-  proxy: 'http://localhost:3001',
+  proxy: 'http://localhost:5001',
   username: '',
   userReady: false,
   userNotFound: false
