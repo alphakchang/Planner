@@ -74,7 +74,7 @@ class TeamTaskList extends Component {
 
     getRandomWorkingDate = () => {
         const today = new Date();
-        const randomWorkingDays = Math.floor(Math.random() * 12) + 1; // 1 to 10 working days
+        const randomWorkingDays = Math.floor(Math.random() * 14) + 1; // 1 to 14 working days
         const randomDate = this.addWorkingDays(today, randomWorkingDays);
         const day = String(randomDate.getDate()).padStart(2, '0');
         const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Months are zero indexed
@@ -84,11 +84,37 @@ class TeamTaskList extends Component {
         return `${day}-${month}-${year} ${hours}:${minutes}`;
     }
 
+    
+
     addTask = async () => {
+
+        const potentialTasks = [
+            'create database',
+            'review budget',
+            'draft correspondence',
+            'organize meetings',
+            'prepare presentations',
+            'conduct research',
+            'update website content',
+            'manage social media accounts',
+            'compile reports',
+            'coordinate projects',
+            'process invoices',
+            'administer payroll',
+            'supervise staff',
+            'develop marketing strategies',
+            'negotiate contracts',
+            'monitor inventory',
+            'handle customer inquiries',
+            'plan corporate events',
+            'conduct performance reviews',
+            'train new employees'
+        ]        
+
         const newTask = {
             username: '',
             centre: this.state.team,
-            task_name: this.randomItem(['drink coffee', 'make coffee', 'select beans', 'milk frothing', 'clean up', 'random chat', 'choose coffee type', 'wash mug']),
+            task_name: this.randomItem(potentialTasks),
             locale: this.randomItem(['FR', 'DE', 'ES', 'IT', 'JA', 'KO', 'ZH']),
             required_hours: (Math.random() * (8 - 1) + 1).toFixed(2),
             deadline: this.getRandomWorkingDate(),

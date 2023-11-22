@@ -28,14 +28,14 @@ import UserNotFound from './components/Alerts/UserNotFound/UserNotFound';
  * TeamWorkload
  * Footer
  * 
- * The proxy is the only state that needs to be decided by the developer, which is the URL of the backend server
+ * The proxy is the only state that needs to be updated by the developer, which is the URL of the backend server
  * All the other states are controlled by the components themselves
  * 
  */
 
-// The initial state of the application, only the proxy needs to be decided by the developer
+// The initial state of the application, only the proxy needs to be updated by the developer
 const initialState = {
-  proxy: 'http://localhost:5001',
+  proxy: 'https://naga.alphacrc.com:5001',
   username: '',
   userReady: false,
   userNotFound: false

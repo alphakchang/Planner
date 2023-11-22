@@ -33,7 +33,7 @@ const Navigation = () => {
                             <a href="#teamWorkload" className="nav-link">Team Workload</a>
                         </li>
                         <li className="nav-item">
-                            <a href="http://naga.alphacrc.com:5214" className="nav-link">AI Playground</a>
+                            <a href="https://naga.alphacrc.com:5214" className="nav-link">AI Playground</a>
                         </li>
                     </ul>
                 </div>
